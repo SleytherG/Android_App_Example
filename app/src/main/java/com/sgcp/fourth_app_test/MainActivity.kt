@@ -11,10 +11,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val swEncendido: Switch = findViewById(R.id.sw_encender);
-        swEncendido.setOnCheckedChangeListener({ _ , isChecked ->
-            val texto = if ( isChecked ) "Encendido" else "Apagado";
-            swEncendido.text = texto;
-        })
     }
 }
