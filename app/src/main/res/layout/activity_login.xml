@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/fondo"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Iniciar Sesión"
+                android:text="@string/login"
                 android:textSize="24dp"
                 android:textColor="@color/white"/>
         </LinearLayout>
@@ -51,7 +51,7 @@
                     android:layout_width="26dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Usuario:"
+                    android:text="@string/user"
                     android:textSize="20sp"
                     android:textColor="@color/white"/>
 
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Ingrese su usuario"
+                    android:hint="@string/user_hint"
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Contraseña:"
+                    android:text="@string/pass"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Ingrese su contraseña"
+                    android:hint="@string/pass_hint"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:backgroundTint="@color/white"
@@ -112,7 +112,7 @@
                 android:id="@+id/btn_iniciar_sesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar Sesión"
+                android:text="@string/login"
                 android:onClick="iniciarSesion"
                 />
         </LinearLayout>
@@ -131,6 +131,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Todos los derechos reservados." />
+            android:text="@string/copyright" />
     </LinearLayout>
 </LinearLayout>

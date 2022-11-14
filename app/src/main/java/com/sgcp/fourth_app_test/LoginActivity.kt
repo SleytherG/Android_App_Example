@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         val etUsuario: EditText = findViewById(R.id.et_user);
         val etPassword: EditText = findViewById(R.id.et_pass);
