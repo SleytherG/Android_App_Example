@@ -14,9 +14,6 @@
         android:theme="@style/Theme.Fourth_App_Test"
         tools:targetApi="31">
         <activity
-            android:name=".TestActivity"
-            android:exported="false" />
-        <activity
             android:name=".PanelActivity"
             android:exported="true">
              <intent-filter>
