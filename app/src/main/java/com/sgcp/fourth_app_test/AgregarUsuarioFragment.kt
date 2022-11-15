@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,11 +50,22 @@ class AgregarUsuarioFragment : Fragment() {
             val admin = BaseDatosAPP(context, "bd", null, 1);
             val bd = admin.writableDatabase;
             val reg = ContentValues();
-            reg.put("ID", 1);
-            reg.put("NOMBRE", etUsuario.text.toString());
-            reg.put("PASSWORD", etPass1.text.toString());
-            bd.insert("Usuarios", null, reg);
-            bd.close();
+
+            if ( etPass1.text.toString().equals(etPass2.text.toString())) {
+                reg.put("NOMBRE", etUsuario.text.toString());
+                reg.put("PASSWORD", etPass1.text.toString());
+                bd.insert("Usuarios", null, reg);
+                bd.close();
+
+                etUsuario.setText("");
+                etPass1.setText("");
+                etPass2.setText("");
+                etUsuario.requestFocus();
+
+                Toast.makeText(context, "Se ha agregado el usuario correctamente.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Las contraseñas no son iguales.", Toast.LENGTH_SHORT).show();
+            }
         }
 
 

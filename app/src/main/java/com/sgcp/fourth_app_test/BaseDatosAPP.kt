@@ -8,7 +8,7 @@ class BaseDatosAPP(context: Context?, name: String?, factory: SQLiteDatabase.Cur
     SQLiteOpenHelper(context, name, factory, version) {
 
     val create_users_table = "CREATE TABLE Usuarios" +
-                             "(ID INT PRIMARY KEY," +
+                             "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                              "NOMBRE TEXT," +
                              "PASSWORD TEXT)";
 //    val insert_data_table_users = "INSERT INTO Usuarios (ID, NOMBRE, PASSWORD) VALUES (1, 'Sleyther', '1234')";
