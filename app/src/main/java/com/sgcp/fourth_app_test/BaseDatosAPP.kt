@@ -16,16 +16,25 @@ class BaseDatosAPP(context: Context?, name: String?, factory: SQLiteDatabase.Cur
     val create_tareas_table = "CREATE TABLE Tareas" +
                               "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                               "NOMBRE TEXT,"+
-                              "DESCRIPTION TEXT,"+
+                              "DESCRIPCION TEXT,"+
                               "IMAGEN INT,"+
                               "USER INT)";
 
     override fun onCreate(database: SQLiteDatabase?) {
         database?.execSQL(create_users_table);
         database?.execSQL(create_tareas_table);
+
+        database?.execSQL(tareasPrincipales);
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         TODO("Not yet implemented")
     }
+
+    val tareasPrincipales = "INSERT INTO Tareas (ID, NOMBRE, DESCRIPCION, IMAGEN, USER) VALUES " +
+                            "(1, 'Limpiar el puente', 'El puente esta sucio debemos limpiarlo bien.', "+R.mipmap.img_2+", 1)," +
+                            "(2, 'Limpiar la playa', 'La playa tiene plastico.', "+R.mipmap.img_3+", 1)," +
+                            "(3, 'Meditar', 'Haz hecho demasiado el dia de hoy toca descansar un poco.', "+R.mipmap.img_6+", 1)," +
+                            "(4, 'Hacer guardia en el camino', 'Necesitamos revisar el camino.', "+R.mipmap.img_8+", 1)," +
+                            "(5, 'Cortar flores', 'Las flores estan muy grandes hay que cortarlas.', "+R.mipmap.img_9+", 1);";
 }

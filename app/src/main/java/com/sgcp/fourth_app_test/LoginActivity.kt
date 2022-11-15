@@ -1,5 +1,6 @@
 package com.sgcp.fourth_app_test
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,6 +28,13 @@ class LoginActivity : AppCompatActivity() {
 
         val admin = BaseDatosAPP(this, "bd", null, 1 );
         val bd = admin.writableDatabase;
+
+        val reg = ContentValues();
+        reg.put("NOMBRE", "Danisable");
+        reg.put("PASSWORD", "1234");
+        bd.insert("Usuarios", null, reg);
+
+
         val fila = bd.rawQuery("SELECT NOMBRE, PASSWORD FROM Usuarios WHERE NOMBRE='${etUsuario.text.toString()}' AND PASSWORD='${etPassword.text.toString()}'", null);
 
         var user = "";
