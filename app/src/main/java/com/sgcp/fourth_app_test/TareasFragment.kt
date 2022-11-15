@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import com.sgcp.fourth_app_test.controller.AdapterTareas
+import com.sgcp.fourth_app_test.data.Tarea
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,6 +50,22 @@ class TareasFragment : Fragment() {
 
 
         return rootView;
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        AdapterTareas(getTareasList());
+    }
+
+    fun getTareasList(): ArrayList<Tarea> {
+        var tareasList : ArrayList<Tarea> = ArrayList();
+        tareasList.add(Tarea(1, "Bugs menores", "Arreglar bugs menores de una app", R.mipmap.ic_launcher_round, 1));
+        tareasList.add(Tarea(2, "Arreglar vista", "Arreglar vista de la pagina principal", R.mipmap.ic_launcher_round, 1));
+        tareasList.add(Tarea(3, "Barrer Jardin", "Barrer el jardin o papá se molesta", R.mipmap.ic_launcher_round, 1));
+        tareasList.add(Tarea(4, "Recoger la ropa", "Recoge la ropa de tu cuarto o mamá se enoja", R.mipmap.ic_launcher_round, 1));
+        tareasList.add(Tarea(5, "Cuidar mascotas", "Saca a pasear a tus mascotas o enfermaran", R.mipmap.ic_launcher_round, 1));
+
+        return tareasList;
     }
 
     companion object {
