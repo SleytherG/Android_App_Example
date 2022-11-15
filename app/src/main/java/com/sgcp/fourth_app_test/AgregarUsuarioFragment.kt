@@ -1,10 +1,13 @@
 package com.sgcp.fourth_app_test
 
+import android.content.ContentValues
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +37,27 @@ class AgregarUsuarioFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agregar_usuario, container, false)
+
+        val rootView: View = inflater.inflate(R.layout.fragment_agregar_usuario, container, false);
+
+        val etUsuario: EditText = rootView.findViewById(R.id.et_username_add);
+        val etPass1: EditText = rootView.findViewById(R.id.et_pass_1_add);
+        val etPass2: EditText = rootView.findViewById(R.id.et_pass_2_add);
+        val btnAddUser: Button = rootView.findViewById(R.id.btnAddUser);
+
+        btnAddUser.setOnClickListener {
+            val admin = BaseDatosAPP(context, "bd", null, 1);
+            val bd = admin.writableDatabase;
+            val reg = ContentValues();
+            reg.put("ID", 1);
+            reg.put("NOMBRE", etUsuario.text.toString());
+            reg.put("PASSWORD", etPass1.text.toString());
+            bd.insert("Usuarios", null, reg);
+            bd.close();
+        }
+
+
+        return rootView;
     }
 
     companion object {
