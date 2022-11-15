@@ -13,8 +13,16 @@ class BaseDatosAPP(context: Context?, name: String?, factory: SQLiteDatabase.Cur
                              "PASSWORD TEXT)";
 //    val insert_data_table_users = "INSERT INTO Usuarios (ID, NOMBRE, PASSWORD) VALUES (1, 'Sleyther', '1234')";
 
+    val create_tareas_table = "CREATE TABLE Tareas" +
+                              "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                              "NOMBRE TEXT,"+
+                              "DESCRIPTION TEXT,"+
+                              "IMAGEN INT,"+
+                              "USER INT)";
+
     override fun onCreate(database: SQLiteDatabase?) {
         database?.execSQL(create_users_table);
+        database?.execSQL(create_tareas_table);
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
