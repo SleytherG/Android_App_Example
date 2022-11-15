@@ -6,12 +6,16 @@
     tools:context=".TareasFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="FRAGMENT TAREAS"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:orientation="vertical">
 
+        <ListView
+            android:id="@+id/lista_tareas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </FrameLayout>

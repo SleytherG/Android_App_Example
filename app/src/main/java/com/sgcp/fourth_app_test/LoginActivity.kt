@@ -1,5 +1,6 @@
 package com.sgcp.fourth_app_test
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,9 @@ import android.view.View
 import android.widget.*
 
 class LoginActivity : AppCompatActivity() {
+
+    var EXTRA_USER = "EXTRA_USER";
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -33,6 +37,10 @@ class LoginActivity : AppCompatActivity() {
         }
         if( (etUsuario.text.toString() == user) && (etPassword.text.toString() == pass)) {
             Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_LONG).show();
+            val intent = Intent(this, PanelActivity::class.java).apply {
+                putExtra(EXTRA_USER, user);
+            };
+            startActivity(intent);
         } else {
             Toast.makeText(this, "Usuario o contraseña incorrectos...", Toast.LENGTH_LONG).show();
         }

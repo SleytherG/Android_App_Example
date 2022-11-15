@@ -19,7 +19,7 @@
             >
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_user_sesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Panel de: USER"

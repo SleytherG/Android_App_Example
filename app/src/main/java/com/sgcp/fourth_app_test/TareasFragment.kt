@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +36,17 @@ class TareasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tareas, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_tareas, container, false);
+
+        val tareas = arrayOf("Bugs menores", "Arreglar Vista", "Barrer el jardin", "Recoger ropa", "Cuidar mascotas");
+        val listaTareas: ListView = rootView.findViewById(R.id.lista_tareas);
+        val adaptador =
+            context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, tareas) };
+        listaTareas.adapter = adaptador;
+
+
+
+        return rootView;
     }
 
     companion object {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -40,6 +41,20 @@ class PrincipalFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val rootView: View = inflater.inflate(R.layout.fragment_principal, container, false);
+
+        val dataBundle = arguments;
+        val user = dataBundle?.getString("USER");
+
+        println(user);
+
+
+
+        Toast.makeText(context, "Usuario: ${user}", Toast.LENGTH_LONG).show();
+
+        val tvUser: TextView = rootView.findViewById(R.id.tv_user_sesion);
+//        tvUser.setText("Panel de ${user}");
+        tvUser.setText("");
+        tvUser.text = "Panel de ${user}";
 
         val btnTareas: ImageButton = rootView.findViewById(R.id.btnTareas);
         btnTareas.setOnClickListener {
