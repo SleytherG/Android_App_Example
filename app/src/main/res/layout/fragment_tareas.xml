@@ -5,17 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".TareasFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_lista_tareas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/lista_tareas"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        android:layout_height="wrap_content" />
 </FrameLayout>
