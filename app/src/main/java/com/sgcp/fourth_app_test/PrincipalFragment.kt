@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +37,14 @@ class PrincipalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_principal, container, false)
+        val rootView: View = inflater.inflate(R.layout.fragment_principal, container, false);
+
+        val btnTareas: ImageButton = rootView.findViewById(R.id.btnTareas);
+        btnTareas.setOnClickListener {
+            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
+        }
+
+        return rootView;
     }
 
     companion object {

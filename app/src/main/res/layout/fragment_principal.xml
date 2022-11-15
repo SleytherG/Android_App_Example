@@ -55,7 +55,7 @@
                     >
 
                     <ImageButton
-                        android:id="@+id/imageButton"
+                        android:id="@+id/btnTareas"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:srcCompat="@drawable/task"
@@ -78,7 +78,7 @@
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/btnAgregarTarea"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:srcCompat="@drawable/add_task" />
@@ -107,7 +107,7 @@
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/btnAgregarUsuario"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:srcCompat="@drawable/person_add" />
@@ -129,7 +129,7 @@
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/btnConfig"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:srcCompat="@drawable/settings" />
