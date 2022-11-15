@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +43,42 @@ class PrincipalFragment : Fragment() {
 
         val btnTareas: ImageButton = rootView.findViewById(R.id.btnTareas);
         btnTareas.setOnClickListener {
-            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
+//            Toast.makeText(context, "Redirect to Tareas", Toast.LENGTH_LONG).show();
+            parentFragmentManager.commit {
+                replace<TareasFragment>(R.id.fcv_main_container);
+                setReorderingAllowed(true);
+                addToBackStack("principal");
+            }
+        }
+
+        val btnAgregarTarea: ImageButton = rootView.findViewById(R.id.btnAgregarTarea);
+        btnAgregarTarea.setOnClickListener {
+//            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
+            parentFragmentManager.commit {
+                replace<AgregarTareaFragment>(R.id.fcv_main_container);
+                setReorderingAllowed(true);
+                addToBackStack("principal");
+            }
+        }
+
+        val btnAgregarUsuario: ImageButton = rootView.findViewById(R.id.btnAgregarUsuario);
+        btnAgregarUsuario.setOnClickListener {
+//            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
+            parentFragmentManager.commit {
+                replace<AgregarUsuarioFragment>(R.id.fcv_main_container);
+                setReorderingAllowed(true);
+                addToBackStack("principal");
+            }
+        }
+
+        val btnConfiguracion: ImageButton = rootView.findViewById(R.id.btnConfig);
+        btnConfiguracion.setOnClickListener {
+//            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
+            parentFragmentManager.commit {
+                replace<ConfiguracionFragment>(R.id.fcv_main_container);
+                setReorderingAllowed(true);
+                addToBackStack("principal");
+            }
         }
 
         return rootView;

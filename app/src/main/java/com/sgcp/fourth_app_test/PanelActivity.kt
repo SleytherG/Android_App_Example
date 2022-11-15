@@ -14,6 +14,5 @@ class PanelActivity : AppCompatActivity() {
             setReorderingAllowed(true)
             add<PrincipalFragment>(R.id.fcv_main_container)
         }
-
     }
 }
