@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sgcp.fourth_app_test.controller.AdapterTareas
 import com.sgcp.fourth_app_test.data.Tarea
 
@@ -24,6 +26,9 @@ class TareasFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var adapterTareas: AdapterTareas;
+    private lateinit var recyclerView: RecyclerView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +59,13 @@ class TareasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        AdapterTareas(getTareasList());
+
+        val layoutManager = LinearLayoutManager(context)
+        recyclerView = view.findViewById(R.id.rv_lista_tareas);
+        recyclerView.layoutManager = layoutManager;
+        recyclerView.setHasFixedSize(true);
+        adapterTareas = AdapterTareas(getTareasList());
+        recyclerView.adapter = adapterTareas;
     }
 
     fun getTareasList(): ArrayList<Tarea> {
