@@ -40,9 +40,10 @@ class TareasFragment : Fragment() {
 
 //        val tareas = arrayOf("Bugs menores", "Arreglar Vista", "Barrer el jardin", "Recoger ropa", "Cuidar mascotas");
 //        val listaTareas: ListView = rootView.findViewById(R.id.lista_tareas);
-//        val adaptador =
-//            context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, tareas) };
+//        val adaptador = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, tareas) };
 //        listaTareas.adapter = adaptador;
+
+
 
 
 
