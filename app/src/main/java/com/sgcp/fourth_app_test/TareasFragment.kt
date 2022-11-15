@@ -70,11 +70,28 @@ class TareasFragment : Fragment() {
 
     fun getTareasList(): ArrayList<Tarea> {
         var tareasList : ArrayList<Tarea> = ArrayList();
-//        tareasList.add(Tarea(1, "Bugs menores", "Arreglar bugs menores de una app", R.mipmap.img_2, 1));
-//        tareasList.add(Tarea(2, "Arreglar vista", "Arreglar vista de la pagina principal", R.mipmap.img_3, 1));
-//        tareasList.add(Tarea(3, "Barrer Jardin", "Barrer el jardin o papá se molesta", R.mipmap.img_6, 1));
-//        tareasList.add(Tarea(4, "Recoger la ropa", "Recoge la ropa de tu cuarto o mamá se enoja", R.mipmap.img_8, 1));
-//        tareasList.add(Tarea(5, "Cuidar mascotas", "Saca a pasear a tus mascotas o enfermaran", R.mipmap.img_9, 1));
+
+        val admin = BaseDatosAPP(context, "bd", null, 1);
+        val bd = admin.writableDatabase;
+
+        val reg = bd.rawQuery("SELECT ID, NOMBRE, DESCRIPCION, IMAGEN, USER FROM Tareas", null);
+
+        var id = 0;
+        var name = "";
+        var desc = "";
+        var img = 0;
+        var user = 0;
+
+        if ( reg.moveToFirst()) {
+            do {
+                id = reg.getString(0).toInt();
+                name = reg.getString(1);
+                desc = reg.getString(2);
+                img = reg.getString(3).toInt();
+                user = reg.getString(4).toInt();
+                tareasList.add(Tarea(id, name, desc, img, user));
+            } while ( reg.moveToNext())
+        }
 
         return tareasList;
     }
