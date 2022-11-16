@@ -1,6 +1,7 @@
 package com.sgcp.fourth_app_test
 
 import android.app.Activity.RESULT_OK
+import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,7 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 
 // TODO: Rename parameter arguments, choose names that match
@@ -53,6 +56,30 @@ class AgregarTareaFragment : Fragment() {
         btnSeleccionarImagen.setOnClickListener {
             val galeria = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
             startActivityForResult(galeria, pickImage);
+        }
+
+        val nombreTarea: EditText = rootView.findViewById(R.id.et_nombre_tarea);
+        val descTarea: EditText = rootView.findViewById(R.id.et_desc_tarea);
+
+        val btnAgregarTarea: Button = rootView.findViewById(R.id.btn_agregar_tarea);
+
+        btnAgregarTarea.setOnClickListener {
+            val admin = BaseDatosAPP(context, "bd", null, 1);
+            val bd = admin.writableDatabase;
+            val reg = ContentValues();
+
+            reg.put("NOMBRE", nombreTarea.text.toString());
+            reg.put("DESCRIPCION", descTarea.text.toString());
+            reg.put("IMAGEN", R.mipmap.img_2);
+            reg.put("USER", 1);
+
+            bd.insert("Tareas", null, reg);
+            bd.close();
+
+            nombreTarea.setText("");
+            descTarea.setText("");
+            Toast.makeText(context, "Se ha agregado la tarea correctamente.", Toast.LENGTH_LONG).show();
+            nombreTarea.requestFocus();
         }
 
         return rootView;
