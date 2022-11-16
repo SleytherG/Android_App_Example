@@ -33,8 +33,8 @@ class BaseDatosAPP(context: Context?, name: String?, factory: SQLiteDatabase.Cur
 
     val tareasPrincipales = "INSERT INTO Tareas (ID, NOMBRE, DESCRIPCION, IMAGEN, USER) VALUES " +
                             "(1, 'Limpiar el puente', 'El puente esta sucio debemos limpiarlo bien.', "+R.mipmap.img_2+", 1)," +
-                            "(2, 'Limpiar la playa', 'La playa tiene plastico.', "+R.mipmap.img_3+", 1)," +
+                            "(2, 'Limpiar la playa', 'La playa tiene plastico.', "+R.mipmap.img_3+", 2)," +
                             "(3, 'Meditar', 'Haz hecho demasiado el dia de hoy toca descansar un poco.', "+R.mipmap.img_6+", 1)," +
-                            "(4, 'Hacer guardia en el camino', 'Necesitamos revisar el camino.', "+R.mipmap.img_8+", 1)," +
+                            "(4, 'Hacer guardia en el camino', 'Necesitamos revisar el camino.', "+R.mipmap.img_8+", 3)," +
                             "(5, 'Cortar flores', 'Las flores estan muy grandes hay que cortarlas.', "+R.mipmap.img_9+", 1);";
 }

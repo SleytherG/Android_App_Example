@@ -60,18 +60,8 @@ class PrincipalFragment : Fragment() {
         val btnTareas: ImageButton = rootView.findViewById(R.id.btnTareas);
         btnTareas.setOnClickListener {
 //            Toast.makeText(context, "Redirect to Tareas", Toast.LENGTH_LONG).show();
-            parentFragmentManager.commit {
-                replace<TareasFragment>(R.id.fcv_main_container);
-                setReorderingAllowed(true);
-                addToBackStack("principal");
-            }
-        }
-
-        val btnAgregarTarea: ImageButton = rootView.findViewById(R.id.btnAgregarTarea);
-        btnAgregarTarea.setOnClickListener {
-//            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
 //            parentFragmentManager.commit {
-//                replace<AgregarTareaFragment>(R.id.fcv_main_container);
+//                replace<TareasFragment>(R.id.fcv_main_container);
 //                setReorderingAllowed(true);
 //                addToBackStack("principal");
 //            }
@@ -79,12 +69,25 @@ class PrincipalFragment : Fragment() {
             val fmanagerTrans = fmanager.beginTransaction();
             val fragment = TareasFragment();
 
-            val dataBundle = Bundle();
+            val databundle = Bundle();
             if ( id != null) {
-                dataBundle.putInt("IDUSER", id);
+                databundle.putInt("IDUSER", id);
             }
-            fragment.arguments = dataBundle;
-            fmanagerTrans.replace(R.id.fcv_main_container, fragment).commit();
+            fragment.arguments = databundle;
+            fmanagerTrans.replace(R.id.fcv_main_container, fragment)
+                .setReorderingAllowed(true)
+                .addToBackStack("principal")
+                .commit();
+        }
+
+        val btnAgregarTarea: ImageButton = rootView.findViewById(R.id.btnAgregarTarea);
+        btnAgregarTarea.setOnClickListener {
+            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
+            parentFragmentManager.commit {
+                replace<AgregarTareaFragment>(R.id.fcv_main_container);
+                setReorderingAllowed(true);
+                addToBackStack("principal");
+            }
         }
 
         val btnAgregarUsuario: ImageButton = rootView.findViewById(R.id.btnAgregarUsuario);

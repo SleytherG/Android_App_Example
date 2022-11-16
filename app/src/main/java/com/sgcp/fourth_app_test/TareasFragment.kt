@@ -1,6 +1,8 @@
 package com.sgcp.fourth_app_test
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +26,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class TareasFragment : Fragment() {
+
+    var globalID = 0;
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -44,24 +49,20 @@ class TareasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_tareas, container, false);
+        val rootView: View = inflater.inflate(R.layout.fragment_tareas, container, false);
 
 
         val dataBundle = arguments;
-        val id = dataBundle?.getInt("IDUSER");
+        dataBundle?.getInt("IDUSER")?.let {
+            globalID = it;
+        };
 
-        Toast.makeText(context, "ID: ${id}", Toast.LENGTH_LONG).show();
-//        val tareas = arrayOf("Bugs menores", "Arreglar Vista", "Barrer el jardin", "Recoger ropa", "Cuidar mascotas");
-//        val listaTareas: ListView = rootView.findViewById(R.id.lista_tareas);
-//        val adaptador = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, tareas) };
-//        listaTareas.adapter = adaptador;
-
-
-
-
+        Toast.makeText(context, "ID: ${globalID}", Toast.LENGTH_LONG).show();
 
         return rootView;
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -80,7 +81,7 @@ class TareasFragment : Fragment() {
         val admin = BaseDatosAPP(context, "bd", null, 1);
         val bd = admin.writableDatabase;
 
-        val reg = bd.rawQuery("SELECT ID, NOMBRE, DESCRIPCION, IMAGEN, USER FROM Tareas", null);
+        val reg = bd.rawQuery("SELECT ID, NOMBRE, DESCRIPCION, IMAGEN, USER FROM Tareas WHERE USER='${globalID}'", null);
 
         var id = 0;
         var name = "";
