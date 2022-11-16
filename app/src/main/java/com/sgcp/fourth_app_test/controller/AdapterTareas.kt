@@ -14,6 +14,8 @@ class AdapterTareas(private val tareasList: ArrayList<Tarea>): RecyclerView.Adap
 
     lateinit var context: Context;
 
+    var onItemClick: ((Tarea) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_tareas_list, parent, false);
         return ViewHolder(itemView);
@@ -26,6 +28,10 @@ class AdapterTareas(private val tareasList: ArrayList<Tarea>): RecyclerView.Adap
         holder.tareaDesc.text = tarea.desc;
         holder.tareaImg.setImageResource(tarea.image);
         holder.tareaUser = tarea.user;
+
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(tarea);
+        }
     }
 
     override fun getItemCount(): Int {

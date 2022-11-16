@@ -73,6 +73,10 @@ class TareasFragment : Fragment() {
         recyclerView.setHasFixedSize(true);
         adapterTareas = AdapterTareas(getTareasList());
         recyclerView.adapter = adapterTareas;
+
+        adapterTareas.onItemClick = {
+            Toast.makeText(context, "ID: ${it.id}", Toast.LENGTH_LONG).show();
+        }
     }
 
     fun getTareasList(): ArrayList<Tarea> {
