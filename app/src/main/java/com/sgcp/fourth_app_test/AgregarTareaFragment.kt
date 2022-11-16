@@ -51,6 +51,11 @@ class AgregarTareaFragment : Fragment() {
 
         val rootView = inflater.inflate(R.layout.fragment_agregar_tarea, container, false);
 
+        val dataBundle = arguments;
+        val idUser = dataBundle?.getInt("IDUSER");
+
+        Toast.makeText(context, "ID: ${idUser}", Toast.LENGTH_LONG).show();
+
         imgCargada = rootView.findViewById(R.id.iv_imagen_cargada);
         val btnSeleccionarImagen: Button = rootView.findViewById(R.id.btn_img_tarea);
         btnSeleccionarImagen.setOnClickListener {
@@ -71,7 +76,7 @@ class AgregarTareaFragment : Fragment() {
             reg.put("NOMBRE", nombreTarea.text.toString());
             reg.put("DESCRIPCION", descTarea.text.toString());
             reg.put("IMAGEN", R.mipmap.img_2);
-            reg.put("USER", 1);
+            reg.put("USER", idUser);
 
             bd.insert("Tareas", null, reg);
             bd.close();

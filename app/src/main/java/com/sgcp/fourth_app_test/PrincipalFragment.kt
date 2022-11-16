@@ -83,11 +83,30 @@ class PrincipalFragment : Fragment() {
         val btnAgregarTarea: ImageButton = rootView.findViewById(R.id.btnAgregarTarea);
         btnAgregarTarea.setOnClickListener {
             Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
-            parentFragmentManager.commit {
-                replace<AgregarTareaFragment>(R.id.fcv_main_container);
-                setReorderingAllowed(true);
-                addToBackStack("principal");
+
+            val fmanager = parentFragmentManager;
+            val fmanagerTrans = fmanager.beginTransaction();
+            val fragment = AgregarTareaFragment();
+
+            val databundle = Bundle();
+            if ( id != null) {
+                databundle.putInt("IDUSER", id);
             }
+            fragment.arguments = databundle;
+            fmanagerTrans.replace(R.id.fcv_main_container, fragment)
+                .setReorderingAllowed(true)
+                .addToBackStack("principal")
+                .commit();
+//            parentFragmentManager.commit {
+//                val databundle = Bundle();
+//                if ( id != null) {
+//                    databundle.putInt("IDUSER", id);
+//                }
+//
+//                replace<AgregarTareaFragment>(R.id.fcv_main_container);
+//                setReorderingAllowed(true);
+//                addToBackStack("principal");
+//            }
         }
 
         val btnAgregarUsuario: ImageButton = rootView.findViewById(R.id.btnAgregarUsuario);
