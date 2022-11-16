@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sgcp.fourth_app_test.controller.AdapterTareas
@@ -45,6 +46,11 @@ class TareasFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_tareas, container, false);
 
+
+        val dataBundle = arguments;
+        val id = dataBundle?.getInt("IDUSER");
+
+        Toast.makeText(context, "ID: ${id}", Toast.LENGTH_LONG).show();
 //        val tareas = arrayOf("Bugs menores", "Arreglar Vista", "Barrer el jardin", "Recoger ropa", "Cuidar mascotas");
 //        val listaTareas: ListView = rootView.findViewById(R.id.lista_tareas);
 //        val adaptador = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, tareas) };

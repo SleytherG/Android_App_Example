@@ -14,6 +14,7 @@ class PanelActivity : AppCompatActivity() {
         setContentView(R.layout.activity_panel)
 
         val user = intent.getStringExtra("EXTRA_USER");
+        val id = intent.getIntExtra("EXTRA_ID", 0);
 
         val fmanager = supportFragmentManager;
         val fmanagerTrans = fmanager.beginTransaction();
@@ -21,6 +22,7 @@ class PanelActivity : AppCompatActivity() {
 
         val dataBundle = Bundle();
         dataBundle.putString("USER", user);
+        dataBundle.putInt("ID", id);
         fragment.arguments = dataBundle;
         fmanagerTrans.add(R.id.fcv_main_container, fragment).commit();
 

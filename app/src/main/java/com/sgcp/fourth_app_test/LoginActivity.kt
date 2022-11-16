@@ -11,6 +11,7 @@ import android.widget.*
 class LoginActivity : AppCompatActivity() {
 
     var EXTRA_USER = "EXTRA_USER";
+    var EXTRA_ID = "EXTRA_ID";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,18 +36,20 @@ class LoginActivity : AppCompatActivity() {
         bd.insert("Usuarios", null, reg);
 
 
-        val fila = bd.rawQuery("SELECT NOMBRE, PASSWORD FROM Usuarios WHERE NOMBRE='${etUsuario.text.toString()}' AND PASSWORD='${etPassword.text.toString()}'", null);
+        val fila = bd.rawQuery("SELECT ID, NOMBRE, PASSWORD FROM Usuarios WHERE NOMBRE='${etUsuario.text.toString()}' AND PASSWORD='${etPassword.text.toString()}'", null);
 
+        var id = 0;
         var user = "";
         var pass = "";
         if ( fila.moveToFirst()) {
-            user = fila.getString(0);
-            pass = fila.getString(1);
+            id = fila.getString(0).toInt();
+            user = fila.getString(1);
+            pass = fila.getString(2);
         }
         if( (etUsuario.text.toString() == user) && (etPassword.text.toString() == pass)) {
-            Toast.makeText(this, "Iniciando sesión...", Toast.LENGTH_LONG).show();
             val intent = Intent(this, PanelActivity::class.java).apply {
                 putExtra(EXTRA_USER, user);
+                putExtra(EXTRA_ID, id);
             };
             startActivity(intent);
         } else {

@@ -44,12 +44,13 @@ class PrincipalFragment : Fragment() {
 
         val dataBundle = arguments;
         val user = dataBundle?.getString("USER");
+        val id = dataBundle?.getInt("ID");
 
-        println(user);
+        Toast.makeText(context, "USER: ${user} | ID: ${id}", Toast.LENGTH_LONG).show();
 
 
 
-        Toast.makeText(context, "Usuario: ${user}", Toast.LENGTH_LONG).show();
+//        Toast.makeText(context, "Usuario: ${user}", Toast.LENGTH_LONG).show();
 
         val tvUser: TextView = rootView.findViewById(R.id.tv_user_sesion);
 //        tvUser.setText("Panel de ${user}");
@@ -69,11 +70,21 @@ class PrincipalFragment : Fragment() {
         val btnAgregarTarea: ImageButton = rootView.findViewById(R.id.btnAgregarTarea);
         btnAgregarTarea.setOnClickListener {
 //            Toast.makeText(context, "Click en Tareas", Toast.LENGTH_LONG).show();
-            parentFragmentManager.commit {
-                replace<AgregarTareaFragment>(R.id.fcv_main_container);
-                setReorderingAllowed(true);
-                addToBackStack("principal");
+//            parentFragmentManager.commit {
+//                replace<AgregarTareaFragment>(R.id.fcv_main_container);
+//                setReorderingAllowed(true);
+//                addToBackStack("principal");
+//            }
+            val fmanager = parentFragmentManager;
+            val fmanagerTrans = fmanager.beginTransaction();
+            val fragment = TareasFragment();
+
+            val dataBundle = Bundle();
+            if ( id != null) {
+                dataBundle.putInt("IDUSER", id);
             }
+            fragment.arguments = dataBundle;
+            fmanagerTrans.replace(R.id.fcv_main_container, fragment).commit();
         }
 
         val btnAgregarUsuario: ImageButton = rootView.findViewById(R.id.btnAgregarUsuario);
