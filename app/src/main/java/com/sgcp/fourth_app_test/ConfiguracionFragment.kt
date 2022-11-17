@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.*
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,6 +82,14 @@ class ConfiguracionFragment : Fragment() {
         aboutMeBtn.setOnClickListener {
 //            webViewAD.loadUrl("https://www.youtube.com/c/Danisable/videos");
             webViewAD.loadUrl("https://www.google.com");
+        }
+
+        addressBtn.setOnClickListener {
+            parentFragmentManager.commit {
+                replace<MapsFragment>(R.id.fcv_main_container)
+                setReorderingAllowed(true);
+                addToBackStack("principal")
+            }
         }
 
         framePadre.setBackgroundColor(Color.BLACK);
