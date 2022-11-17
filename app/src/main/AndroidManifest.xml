@@ -4,6 +4,7 @@
     package="com.sgcp.fourth_app_test">
 
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,16 +18,16 @@
         <activity
             android:name=".PanelActivity"
             android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+
         </activity>
     </application>
 

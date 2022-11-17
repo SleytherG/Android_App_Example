@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.*
 import androidx.core.content.res.ResourcesCompat
 
@@ -46,6 +47,7 @@ class ConfiguracionFragment : Fragment() {
         val framePadre: FrameLayout = rootView.findViewById(R.id.linear_padre);
         val btnLuces: ToggleButton = rootView.findViewById(R.id.btn_luces);
         val tvLuces: TextView = rootView.findViewById(R.id.tv_luces);
+        val webViewAD: WebView = rootView.findViewById(R.id.wv_about_me);
 
         btnLuces.setOnCheckedChangeListener{ buttonView, isChecked ->
             if ( isChecked ) {
@@ -74,6 +76,12 @@ class ConfiguracionFragment : Fragment() {
                 aboutMeBtn.typeface = Typeface.DEFAULT;
             }
         }
+
+        aboutMeBtn.setOnClickListener {
+//            webViewAD.loadUrl("https://www.youtube.com/c/Danisable/videos");
+            webViewAD.loadUrl("https://www.google.com");
+        }
+
         framePadre.setBackgroundColor(Color.BLACK);
         changeFont.setTextColor(Color.WHITE);
         tv.setTextColor(Color.WHITE);
