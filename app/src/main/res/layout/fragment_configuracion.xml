@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_padre"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ConfiguracionFragment">
@@ -32,19 +33,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/tv_luces"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Apagar las luces"
+                android:text="Luces"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
             <ToggleButton
-                android:id="@+id/toggleButton"
+                android:id="@+id/btn_luces"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="ToggleButton"
-                android:layout_marginLeft="130dp"/>
+                android:layout_marginLeft="220dp"/>
 
         </LinearLayout>
 

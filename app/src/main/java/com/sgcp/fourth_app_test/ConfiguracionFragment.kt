@@ -1,14 +1,13 @@
 package com.sgcp.fourth_app_test
 
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Switch
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.res.ResourcesCompat
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,6 +43,25 @@ class ConfiguracionFragment : Fragment() {
         val changeFont: Switch = rootView.findViewById(R.id.sw_change_font);
         val addressBtn: Button = rootView.findViewById(R.id.btn_address);
         val aboutMeBtn: Button = rootView.findViewById(R.id.btn_about_me);
+        val framePadre: FrameLayout = rootView.findViewById(R.id.linear_padre);
+        val btnLuces: ToggleButton = rootView.findViewById(R.id.btn_luces);
+        val tvLuces: TextView = rootView.findViewById(R.id.tv_luces);
+
+        btnLuces.setOnCheckedChangeListener{ buttonView, isChecked ->
+            if ( isChecked ) {
+                framePadre.setBackgroundColor(Color.WHITE);
+                changeFont.setTextColor(Color.BLACK);
+                tv.setTextColor(Color.BLACK);
+                tvLuces.setTextColor(Color.BLACK);
+            } else {
+                framePadre.setBackgroundColor(Color.BLACK);
+                changeFont.setTextColor(Color.WHITE);
+                tv.setTextColor(Color.WHITE);
+                tvLuces.setTextColor(Color.WHITE);
+            }
+
+        }
+
         changeFont.setOnCheckedChangeListener{ buttonView, isChecked ->
             if (isChecked) {
                 val tf = context?.let { ResourcesCompat.getFont(it, R.font.supercell_magic) }
@@ -56,6 +74,10 @@ class ConfiguracionFragment : Fragment() {
                 aboutMeBtn.typeface = Typeface.DEFAULT;
             }
         }
+        framePadre.setBackgroundColor(Color.BLACK);
+        changeFont.setTextColor(Color.WHITE);
+        tv.setTextColor(Color.WHITE);
+        tvLuces.setTextColor(Color.WHITE);
         return rootView;
     }
 
