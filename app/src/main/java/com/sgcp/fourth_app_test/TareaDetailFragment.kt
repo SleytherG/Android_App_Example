@@ -48,21 +48,22 @@ class TareaDetailFragment : Fragment() {
 
         Toast.makeText(context, "ID dentro de tarea detail: ${globalID}", Toast.LENGTH_LONG).show();
 
+        val imagenTarea: ImageView = rootView.findViewById(R.id.iv_tarea_detail);
         val nombreTarea: TextView = rootView.findViewById(R.id.tv_tarea_name_detail);
         val descTarea: TextView = rootView.findViewById(R.id.tv_tarea_desc_detail);
-        val imagenTarea: ImageView = rootView.findViewById(R.id.iv_tarea_detail);
 
         val admin = BaseDatosAPP(context, "bd", null, 1);
         val bd = admin.writableDatabase;
-        val reg = bd.rawQuery("SELECT ID, NOMBRE, DESCRIPCION, IMAGEN, USER FROM Tareas WHERE ID='${globalID}'", null);
+        val reg = bd.rawQuery("SELECT ID, NOMBRE, DESCRIPCION, IMAGEN, USER FROM Tareas WHERE ID= ${globalID}", null);
 
         println(reg);
 
-        nombreTarea.text = reg.getString(1);
-        descTarea.text = reg.getString(2);
-
+        if ( reg.moveToFirst()) {
+            nombreTarea.text = reg.getString(1);
+            descTarea.text = reg.getString(2);
+            imagenTarea.setImageResource(reg.getInt(3));
+        }
         bd.close();
-
         return rootView;
     }
 
