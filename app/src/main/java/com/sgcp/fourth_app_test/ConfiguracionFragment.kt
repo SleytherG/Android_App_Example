@@ -1,10 +1,13 @@
 package com.sgcp.fourth_app_test
 
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Switch
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 
@@ -37,9 +40,21 @@ class ConfiguracionFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val rootView: View = inflater.inflate(R.layout.fragment_configuracion, container, false);
-        rootView.findViewById<TextView?>(R.id.tv_rights).typeface =
-            context?.let {
-                ResourcesCompat.getFont(it, R.font.supercell_magic)
+        val tv = rootView.findViewById<TextView?>(R.id.tv_rights);
+        val changeFont: Switch = rootView.findViewById(R.id.sw_change_font);
+        val addressBtn: Button = rootView.findViewById(R.id.btn_address);
+        val aboutMeBtn: Button = rootView.findViewById(R.id.btn_about_me);
+        changeFont.setOnCheckedChangeListener{ buttonView, isChecked ->
+            if (isChecked) {
+                val tf = context?.let { ResourcesCompat.getFont(it, R.font.supercell_magic) }
+                tv.typeface = tf;
+                addressBtn.typeface = tf;
+                aboutMeBtn.typeface = tf;
+            } else {
+                tv.typeface = Typeface.DEFAULT;
+                addressBtn.typeface = Typeface.DEFAULT;
+                aboutMeBtn.typeface = Typeface.DEFAULT;
+            }
         }
         return rootView;
     }

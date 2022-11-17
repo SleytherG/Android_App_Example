@@ -17,7 +17,7 @@
             android:orientation="horizontal" >
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/sw_change_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -56,14 +56,14 @@
             android:layout_marginTop="400dp">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dirección"
                 android:layout_margin="10dp"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_about_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Acerca de"
