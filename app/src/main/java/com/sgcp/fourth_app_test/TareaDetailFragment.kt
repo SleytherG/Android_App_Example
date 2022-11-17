@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +24,8 @@ class TareaDetailFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var globalID = 0;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,7 +39,31 @@ class TareaDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tarea_detail, container, false)
+        val rootView: View = inflater.inflate(R.layout.fragment_tarea_detail, container, false);
+
+        val databundle = arguments;
+        if ( databundle != null) {
+            globalID = databundle.getInt("IDTAREA")
+        }
+
+        Toast.makeText(context, "ID dentro de tarea detail: ${globalID}", Toast.LENGTH_LONG).show();
+
+        val nombreTarea: TextView = rootView.findViewById(R.id.tv_tarea_name_detail);
+        val descTarea: TextView = rootView.findViewById(R.id.tv_tarea_desc_detail);
+        val imagenTarea: ImageView = rootView.findViewById(R.id.iv_tarea_detail);
+
+        val admin = BaseDatosAPP(context, "bd", null, 1);
+        val bd = admin.writableDatabase;
+        val reg = bd.rawQuery("SELECT ID, NOMBRE, DESCRIPCION, IMAGEN, USER FROM Tareas WHERE ID='${globalID}'", null);
+
+        println(reg);
+
+        nombreTarea.text = reg.getString(1);
+        descTarea.text = reg.getString(2);
+
+        bd.close();
+
+        return rootView;
     }
 
     companion object {

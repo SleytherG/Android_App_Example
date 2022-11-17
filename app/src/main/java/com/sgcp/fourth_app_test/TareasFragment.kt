@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sgcp.fourth_app_test.controller.AdapterTareas
@@ -76,6 +78,21 @@ class TareasFragment : Fragment() {
 
         adapterTareas.onItemClick = {
             Toast.makeText(context, "ID: ${it.id}", Toast.LENGTH_LONG).show();
+            parentFragmentManager.commit {
+                val fmanager = parentFragmentManager;
+                val fmanagerTrans = fmanager.beginTransaction();
+                val fragment = TareaDetailFragment();
+
+                val databundle = Bundle();
+                if ( it.id != null) {
+                    databundle.putInt("IDTAREA", it.id);
+                }
+                fragment.arguments = databundle;
+                fmanagerTrans.replace(R.id.fcv_main_container, fragment)
+                    .setReorderingAllowed(true)
+                    .addToBackStack("principal")
+                    .commit();
+            }
         }
     }
 
